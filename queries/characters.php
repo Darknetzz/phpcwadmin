@@ -3,17 +3,19 @@
   $getcharacter = "SELECT * FROM characters";
   $getcharacter = mysqli_query($sqlc, $getcharacter);
 
- # Create table
- echo  "<table class='table table-striped'>";
- echo "
- <thead class='table-primary'>
- <tr>
- <th>#</th> <th>Name</th> <th>Gender</th>
- <th>Cash</th> <th>Flags</th>
- <th>Faction</th> <th>Action</th>
- </tr>
- </thead>
- ";
+  # Create table
+  echo  "<table class='table table-hover'>";
+  echo "
+  <thead class='table-primary'>
+  <tr>
+  <th>#</th> <th>Name</th>
+  <th>Player</th> <th>Gender</th>
+  <th>Cash</th> <th>Flags</th>
+  <th>Faction</th> <th>Action</th>
+  </tr>
+  </thead>
+  ";
+
   # List out a table with characters
   if ($getcharacter->num_rows < 1) {
     die("No rows found.");
@@ -94,10 +96,10 @@
     // }
 
     # Create a modal for every character
-    echo '
+    $modals[$i] = '
     <!-- Large modal -->
     <div class="modal" id="charinfo'.$i.'" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">#'.$charkey.' '.$charname.'</h5>
@@ -107,31 +109,33 @@
           </div>
           <div class="modal-body">
           <h4>Character</h4>
-            <p>
-            Name: '.$charname.'<br>
-            Gender: '.$chargender.'<br>
-            Physical Description: '.$physdesc.'<br>
-            Faction: '.$charfaction.'<br>
-            Flags: '.$charflags.'<br><br>
-
-            Health: '.$health.'<br>
-            Stamina: '.$stamina.'<br>
-            Honor: '.$honor.'<br><br>
-
-            Last played: '.$charlastplayed.'
-            </p>
-            <hr>
+            <table class="table table-hover">
+            <tr><td>Name:</td> <td>'.$charname.'</td></tr>
+            <tr><td>Gender:</td> <td>'.$chargender.'</td></tr>
+            <tr><td>Physical Description:</td> <td>'.$physdesc.'</td></tr>
+            <tr><td>Faction:</td> <td>'.$charfaction.'</td></tr>
+            <tr><td>Flags:</td> <td>'.$charflags.'</td></tr>
+            <!--<tr><td><td></td></tr>-->
+            <tr><td>Health:</td> <td>'.$health.'</td></tr>
+            <tr><td>Stamina:</td> <td>'.$stamina.'</td></tr>
+            <tr><td>Honor:</td> <td>'.$honor.'</td></tr>
+            <tr><td>Last played:</td> <td>'.$charlastplayed.'</td></tr>
+            </table>
           <h4>Player</h4>
-          Steam name: '.$playername.'<br>
-          SteamID: '.$charsteamid.'<br>
-            <hr>
+            <table class="table table-hover">
+            <tr><td>Steam name:</td> <td>'.$playername.'</td></tr>
+            <tr><td>SteamID:</td> <td>'.$charsteamid.'</td></tr>
+            </table>
           <h4>Items</h4>
-            Inventory cash: '.$charinvcash.'<br>
-            Safebox cash: '.$safeboxcash.'<br><br>
-            <hr>
+            <table class="table table-hover">
+            <tr><td>Inventory cash:</td> <td>'.$charinvcash.'</td></tr>
+            <tr><td>Safebox cash:</td> <td>'.$safeboxcash.'</td></tr>
+            </table>
           <h4>Alliance</h4>
-            Alliance: '.$alliance.'<br>
-            Rank: '.$alliancerank.'<br>
+            <table class="table table-hover">
+            <tr><td>Alliance:</td> <td>'.$alliance.'</td></tr>
+            <tr><td>Rank:</td> <td>'.$alliancerank.'</td></tr>
+            </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -150,11 +154,18 @@
       echo "<tr>";
     }
       echo "
-    <td>$charkey</td> <td>$charname</td> <td>$chargender</td>
+    <td>$charkey</td> <td>$charname</td> <td>$playername</td> <td>$chargender</td>
     <td>Inventory: $charinvcash<br>Safebox: $safeboxcash</td> <td>$charflags</td> <td>$charfaction</td>
-    <td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#charinfo$i'>View</button></td>
+    <td>
+    <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#charinfo$i'>View</button>
+    <a href='?page=editcharacter&id=$charkey' class='btn btn-success'>Edit</a></td>
     </tr>";
   $i++;
 }
   echo "</table>";
+
+  # Initialize modals
+  foreach($modals as $modal) {
+    echo $modal;
+  }
 ?>
