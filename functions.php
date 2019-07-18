@@ -79,4 +79,11 @@
     }
   }
   }
+
+  function getSettings($setting) {
+    $settings = "settings.json";
+    $settings = file_get_contents($settings);
+    $settings = json_decode($settings);
+    return $settings[$setting];
+  }
  ?>
