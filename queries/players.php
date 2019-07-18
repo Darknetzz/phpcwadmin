@@ -63,7 +63,7 @@
     }
 
     # Create a modal for every player
-    echo '
+    $modals[$i] = '
     <!-- Large modal -->
     <div class="modal" id="playerinfo'.$i.'" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -76,21 +76,25 @@
           </div>
           <div class="modal-body">
           <h4>Player</h4>
-          Name: '.$playersteamname.'<br>
-          IP: '.$playeripaddress.'<br>
-          User Group: '.$playerusergroup.' '.icon("badge-8x").'<br>
-          Flags: '.translateFlags($playerflags).'<br>
-          Donations: '.translateDonation($playerdonations).'<br>
+          <table class="table table-hover">
+          <tr><td>Name:</td> <td>'.$playersteamname.'</td></tr>
+          <tr><td>IP:</td> <td>'.$playeripaddress.'</td></tr>
+          <tr><td>User Group:</td> <td>'.$playerusergroup.' '.icon("badge-8x").'</td></tr>
+          <tr><td>Flags:</td> <td>'.translateFlags($playerflags).'</td></tr>
+          <tr><td>Donations:</td> <td>'.translateDonation($playerdonations).'</td></tr>
+          </table>
           <hr>
           <h4>Time</h4>
-          Time joined: '.gmdate("Y-m-d H:i:s", $playerjoined).'<br>
-          Last played: '.$playerlastplayed.'<br>
+          <table class="table table-hover">
+          <tr><td>Time joined:</td> <td>'.gmdate("Y-m-d H:i:s", $playerjoined).'</td></tr>
+          <tr><td>Last played:</td> <td>'.$playerlastplayed.'</td></tr>
           <hr>
           <h4>Characters</h4>
           ';
           # List out all characters for player
+          echo '<table class="table table-hover">';
           for($cindex=0;$ccount>$cindex;$cindex++){
-            echo '<a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a><br>';
+            echo '<tr><td><a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a></td></tr>';
           }
           echo '
           </div>
@@ -115,4 +119,9 @@
     $i++;
   }
   echo "</table>";
+
+  # Initialize modals
+  foreach ($modals as $modal) {
+    echo $modal;
+  }
 ?>
