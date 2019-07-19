@@ -28,8 +28,8 @@
     return $flags;
   }
 
-  function icon($icon, $size = 15) {
-    $icon = "<img src='img/icons/$icon.png' width='".$size."px' height='".$size."px'>";
+  function icon($icon, $filetype = "svg", $size = 15) {
+    $icon = "<img src='img/icons/$icon.$filetype' width='".$size."px' height='".$size."px'>";
     return $icon;
   }
 
