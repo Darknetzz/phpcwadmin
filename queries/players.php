@@ -88,6 +88,7 @@
           <table class="table table-hover">
           <tr><td>Time joined:</td> <td>'.gmdate("Y-m-d H:i:s", $playerjoined).'</td></tr>
           <tr><td>Last played:</td> <td>'.$playerlastplayed.'</td></tr>
+          </table>
           <hr>
           <h4>Characters</h4>
           ';
