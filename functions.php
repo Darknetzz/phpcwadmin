@@ -82,8 +82,11 @@
 
   function getSettings($setting) {
     $settings = "settings.json";
-    $settings = file_get_contents($settings);
-    $settings = json_decode($settings);
+    $settings = file_get_contents($settings) or die("Settings.json does not seem to exist.");
+    $settings = json_decode($settings, true) or die("Settings.json is not valid! Please fix this.");
+    if (empty($settings[$setting])) {
+      $settings[$setting] = "None";
+    }
     return $settings[$setting];
   }
  ?>
