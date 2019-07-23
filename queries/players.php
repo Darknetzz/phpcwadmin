@@ -98,6 +98,7 @@
             echo '<tr><td><a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a></td></tr>';
           }
           echo '
+          </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
