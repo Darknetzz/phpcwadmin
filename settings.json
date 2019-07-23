@@ -1,4 +1,7 @@
 {
   "logfile":"/usr/games/log/console/gmodserver-console.log",
-  "Title":"Clockwork Admin"
+  "Title":"Clockwork Admin",
+  "charShowID":"true",
+  "plyShowID":"true",
+  "allianceShowID":"true",
 }
