@@ -89,4 +89,18 @@
     }
     return $settings[$setting];
   }
+
+  function changeSetting($setting, $value) {
+    $settings = "settings.json";
+    $settings = file_get_contents($settings) or die("Settings.json does not seem to exist.");
+    $settings = json_decode($settings, true) or die("Settings.json is not valid! Please fix this.");
+    if (empty($value)) {
+      die("The function changeSetting needs a value to set.");
+    } else {
+      $settings[$setting] = $value;
+      $settings = json_encode($settings);
+      $settings = file_put_contents($settings, "settings.json") or die("Failed to save settings.");
+      return true;
+    }
+  }
  ?>
