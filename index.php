@@ -1,9 +1,14 @@
+<?php
+# Include SQLCon and functions
+include("functions.php");
+include("sqlcon.php");
+?>
 <!--
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 -->
 <head>
 	<meta charset="utf-8">
-  <title>PhaseFour</title>
+  <title><?php echo getSettings("Title"); ?></title>
 
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,9 +27,6 @@
 </head>
 <div class="container">
 <?php
-# Include SQLCon and functions
-include("sqlcon.php");
-include("functions.php");
 
 # Include navbar
 include("nav.php");
