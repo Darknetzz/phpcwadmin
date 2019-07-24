@@ -65,6 +65,12 @@
     }
     }
 
+    # Build character list
+    $charlist = "";
+    for($cindex=0;$ccount>$cindex;$cindex++){
+          $charlist = $charlist.'<a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a><br>';
+    }
+
     # Create a modal for every player
     $modals[$i] = '
     <!-- Large modal -->
@@ -94,22 +100,18 @@
           </table>
           <hr>
           <h4>Characters</h4>
-          ';
-          # List out all characters for player
-          # echo '<table class="table table-hover">';
-          for($cindex=0;$ccount>$cindex;$cindex++){
-            echo '<a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a><br>';
-          }
-          echo '
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+          '.$charlist.'
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    ';
+        ';
+          # List out all characters for player
+          # echo '<table class="table table-hover">';
 
     if ($online === TRUE) {
       echo "<tr class='table-success'>";
