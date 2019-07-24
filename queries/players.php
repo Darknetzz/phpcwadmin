@@ -3,19 +3,22 @@
   $getplayers = "SELECT * FROM players";
   $getplayers = mysqli_query($sqlc, $getplayers);
 
- echo  "<table class='table table-striped'>";
- echo "
- <thead class='table-primary'>
- <tr>
- <th>#</th> <th>Steam name</th>
- <th>IP</th> <th>SteamID</th> <th>User group</th>
- <th>Action</th>
- </tr>
- </thead>";
   # List out a table with characters
   if ($getplayers->num_rows < 1) {
     die("No rows found.");
   }
+
+  # Table start
+  echo  "<table class='table table-striped'>";
+  echo "
+  <thead class='table-primary'>
+  <tr>
+  <th>#</th> <th>Steam name</th>
+  <th>IP</th> <th>SteamID</th> <th>User group</th>
+  <th>Action</th>
+  </tr>
+  </thead>";
+
   $i = 0; # Index
   while ($row = $getplayers->fetch_assoc()) {
     # Define player data as array
@@ -93,12 +96,11 @@
           <h4>Characters</h4>
           ';
           # List out all characters for player
-          echo '<table class="table table-hover">';
+          # echo '<table class="table table-hover">';
           for($cindex=0;$ccount>$cindex;$cindex++){
-            echo '<tr><td><a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a></td></tr>';
+            echo '<a href="index.php?page=editcharacter&id='.$pcharkey[$cindex].'">'.$pcharname[$cindex].'</a><br>';
           }
           echo '
-          </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -108,6 +110,7 @@
       </div>
     </div>
     ';
+
     if ($online === TRUE) {
       echo "<tr class='table-success'>";
     } else {
