@@ -7,6 +7,16 @@ $id = mysqli_real_escape_string($sqlc, $_GET['id']);
 $selectcharacter = "SELECT * FROM characters WHERE _Key = '$_GET[id]'";
 $selectcharacter = mysqli_query($sqlc, $selectcharacter);
 
+# Check if character is currently playing (last two minutes), and disallow editing
+while ($row = $selectcharacter->fetch_assoc()) {
+$charlastplayed = $row['_LastPlayed'];
+}
+$timelastplayed = strtotime(gmdate("Y-m-d H:i:s", $charlastplayed));
+$curtime = time();
+if ($curtime - $timelastplayed < 120) {
+  die("This character is currently playing and can't be edited.");
+}
+
   # Check if character with id exists
   if ($selectcharacter->num_rows < 1) {
     die("ID doesn't exist.");
