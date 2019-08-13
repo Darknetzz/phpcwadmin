@@ -28,11 +28,6 @@
     return $flags;
   }
 
-  function icon($icon, $filetype = "svg", $size = 15) {
-    $icon = "<img src='img/icons/$icon.$filetype' width='".$size."px' height='".$size."px'>";
-    return $icon;
-  }
-
   # Function to convert array to a simple list.
   # Use json_decode first, then feed it to function.
   function array2Readable($array, $debug = false) {
@@ -80,6 +75,7 @@
   }
   }
 
+  # Function to extract a given setting from json file
   function getSettings($setting) {
     $settings = "settings.json";
     $settings = file_get_contents($settings) or die("Settings.json does not seem to exist.");
@@ -90,6 +86,7 @@
     return $settings[$setting];
   }
 
+  # Used to update a given setting in json file
   function changeSetting($setting, $value) {
     $settings = "settings.json";
     $settings = file_get_contents($settings) or die("Settings.json does not seem to exist.");
@@ -103,4 +100,14 @@
       return true;
     }
   }
+
+    # Show icon (for navbar)
+    function icon($icon, $filetype = "svg", $size = 15) {
+      # make sure icons are enabled
+      if (!getSettings("navIcons") == TRUE) {
+        return false; # do not show icon - although this should probably be changed as icons can be used elsewhere.
+      }
+      $icon = "<img src='img/icons/$icon.$filetype' width='".$size."px' height='".$size."px'>";
+      return $icon;
+    }
  ?>
