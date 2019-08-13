@@ -6,25 +6,25 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="?page=characters"><?php echo icon("person"); ?> Characters</a>
+        <a class="nav-link" href="?page=characters"><?php echo icon("person", default, default, true); ?> Characters</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?page=players"><?php echo icon("player"); ?> Players</a>
+        <a class="nav-link" href="?page=players"><?php echo icon("player", default, default, true); ?> Players</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?page=alliances"><?php echo icon("alliance"); ?> Alliances</a>
+        <a class="nav-link" href="?page=alliances"><?php echo icon("alliance", default, default, true); ?> Alliances</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?page=bans"><?php echo icon("bans"); ?> Bans</a>
+        <a class="nav-link" href="?page=bans"><?php echo icon("bans", default, default, true); ?> Bans</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?page=logs"><?php echo icon("terminal"); ?> Logs</a>
+        <a class="nav-link" href="?page=logs"><?php echo icon("terminal", default, default, true); ?> Logs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?page=serverquery"><?php echo icon("steam"); ?> ServerQuery</a>
+        <a class="nav-link" href="?page=serverquery"><?php echo icon("steam", default, default, true); ?> ServerQuery</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="?page=settings"><?php echo icon("settings"); ?> Settings</a>
+        <a class="nav-link" href="?page=settings"><?php echo icon("settings", default, default, true); ?> Settings</a>
       </li>
     </ul>
   </div>

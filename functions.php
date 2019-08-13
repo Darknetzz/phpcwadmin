@@ -102,10 +102,10 @@
   }
 
     # Show icon (for navbar)
-    function icon($icon, $filetype = "svg", $size = 15) {
+    function icon($icon, $filetype = "svg", $size = 15, $isnavicon = false) {
       # make sure icons are enabled
-      if (!getSettings("navIcons") == TRUE) {
-        return false; # do not show icon - although this should probably be changed as icons can be used elsewhere.
+      if (getSettings("navIcons") == false && $isnavicon == false) {
+        return false;
       }
       $icon = "<img src='img/icons/$icon.$filetype' width='".$size."px' height='".$size."px'>";
       return $icon;
