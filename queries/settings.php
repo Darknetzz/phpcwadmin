@@ -9,7 +9,7 @@ if (isset($_POST['changesettings'])) {
     # Replace JSON file with POST array
     $updatesettings = array();
     foreach($_POST as $var=>$val) {
-        
+        # Not finished - do array push?
     }
 }
 
@@ -26,4 +26,5 @@ echo "
 <input type='submit' value='Save'>
 </form>
 ";
+
 ?>
