@@ -39,10 +39,10 @@
     $charlastplayed = $row['_LastPlayed'];
 
     # Store data values to variables
-    $safeboxcash = $chardata->safeboxcash;
-    $alliance = $chardata->alliance;
+    $safeboxcash = varIfIsset($chardata->safeboxcash);
+    $alliance = varIfIsset($chardata->alliance);
     $alliancerank = $chardata->rank;
-    $rank = $chardata->FactionRank;
+    $rank = varIfIsset($chardata->FactionRank);
     $physdesc = $chardata->PhysDesc;
     $health = $chardata->Health;
     $stamina = $chardata->Stamina;

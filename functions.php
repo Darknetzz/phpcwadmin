@@ -110,4 +110,14 @@
       $icon = "<img src='img/icons/$icon.$filetype' width='".$size."px' height='".$size."px'>";
       return $icon;
     }
+
+    # Check if variable isset, then return it or set none
+    # Parameter set to false in case given variable not set?
+    function varIfIsset($var = false) {
+      if (isset($var)) {
+        return $var;
+      } else {
+        return false;
+      }
+    }
  ?>
