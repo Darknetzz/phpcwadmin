@@ -1,2 +1,4 @@
 # php-clockwork-admin
-A simple way to manage your Garry's Mod CW server.
+
+> [!NOTE]  
+> This repository is unfinished and outdated. Considering I am no longer actively maintaining any Clockwork-flavored gmod servers, it will be archived.
